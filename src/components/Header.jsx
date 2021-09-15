@@ -10,14 +10,14 @@ class Header extends Component {
       loading: false,
       name: '',
     };
-    this.onLoad = this.onLoad.bind(this);
+    this.showUser = this.showUser.bind(this);
   }
 
   componentDidMount() {
-    this.onLoad();
+    this.showUser();
   }
 
-  async onLoad() {
+  async showUser() {
     this.setState({
       loading: true,
     });
