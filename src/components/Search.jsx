@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import AlbumLibrary from './AlbumLibrary';
+import Loading from './Loading';
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      // loading: false,
-      // redirect: false,
+      artist: '',
+      loading: false,
+      albumList: [],
     };
     this.handleChange = this.handleChange.bind(this);
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target: { name, value } }) {
@@ -18,9 +21,23 @@ class Search extends Component {
     });
   }
 
+  async handleClick() {
+    this.setState({
+      loading: true,
+    });
+    const { artist } = this.state;
+    const resp = await searchAlbumsAPI(artist);
+    this.setState({
+      loading: false,
+      albumList: resp,
+    });
+  }
+
   render() {
-    const { name } = this.state;
+    const { artist, loading, albumList } = this.state;
     const MIN_LENGTH = 2;
+
+    if (loading) return <Loading />;
     return (
       <div data-testid="page-search">
         <form>
@@ -29,7 +46,7 @@ class Search extends Component {
               <input
                 data-testid="search-artist-input"
                 type="text"
-                name="name"
+                name="artist"
                 id="search-artist-input"
                 onChange={ this.handleChange }
               />
@@ -37,13 +54,16 @@ class Search extends Component {
             <button
               type="button"
               data-testid="search-artist-button"
-              disabled={ name.length < MIN_LENGTH }
-              // onClick={ this.handleClick }
+              disabled={ artist.length < MIN_LENGTH }
+              onClick={ this.handleClick }
             >
-              Entrar
+              Pesquisar
             </button>
           </fieldset>
         </form>
+        {(albumList.length === 0)
+          ? <h3>Nenhum álbum foi encontrado</h3>
+          : <AlbumLibrary albumList={ albumList } artist={ artist } />}
       </div>
     );
   }
