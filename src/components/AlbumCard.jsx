@@ -11,7 +11,7 @@ class AlbumCard extends Component {
         to={ `/album/${collectionId}` }
         data-testid={ `link-to-album-${collectionId}` }
       >
-        <img alt="Album Cover" src={ artworkUrl100 } />
+        <img src={ artworkUrl100 } alt="Album Cover" />
         <div>
           <h4>{ collectionName }</h4>
           <h5>{ artistName }</h5>
