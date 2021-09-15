@@ -10,6 +10,7 @@ class Search extends Component {
       artist: '',
       loading: false,
       albumList: [],
+      foundArtist: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -30,11 +31,12 @@ class Search extends Component {
     this.setState({
       loading: false,
       albumList: resp,
+      foundArtist: true,
     });
   }
 
   render() {
-    const { artist, loading, albumList } = this.state;
+    const { artist, loading, albumList, foundArtist } = this.state;
     const MIN_LENGTH = 2;
 
     if (loading) return <Loading />;
@@ -61,9 +63,7 @@ class Search extends Component {
             </button>
           </fieldset>
         </form>
-        {(albumList.length === 0)
-          ? <h3>Nenhum álbum foi encontrado</h3>
-          : <AlbumLibrary albumList={ albumList } artist={ artist } />}
+        {foundArtist && <AlbumLibrary albumList={ albumList } artist={ artist } />}
       </div>
     );
   }

@@ -6,6 +6,7 @@ class AlbumLibrary extends Component {
   render() {
     const { albumList, artist } = this.props;
 
+    if (albumList.length === 0) return <h3>Nenhum álbum foi encontrado</h3>;
     return (
       <div>
         <p>
