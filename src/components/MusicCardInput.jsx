@@ -8,14 +8,16 @@ class MusicCardInput extends Component {
     super(props);
     this.state = {
       loading: false,
+      checked: false,
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  async handleClick() {
-    this.setState({
+  async handleChange() {
+    this.setState(({ checked }) => ({
       loading: true,
-    });
+      checked: !checked,
+    }));
     const { track } = this.props;
     await addSong(track);
     this.setState({
@@ -25,7 +27,7 @@ class MusicCardInput extends Component {
 
   render() {
     const { track: { trackId } } = this.props;
-    const { loading } = this.state;
+    const { loading, checked } = this.state;
 
     if (loading) return <Loading />;
     return (
@@ -36,7 +38,8 @@ class MusicCardInput extends Component {
         <input
           type="checkbox"
           id={ `checkbox-music-${trackId}` }
-          onClick={ this.handleClick }
+          onChange={ this.handleChange }
+          checked={ checked }
         />
       </label>
     );
