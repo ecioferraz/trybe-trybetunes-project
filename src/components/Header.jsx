@@ -36,10 +36,8 @@ class Header extends Component {
         <nav>
           <div>
             <Link to="/search" data-testid="link-to-search">Buscar</Link>
-            <Link to="/album/:id">Album</Link>
             <Link to="/favorites" data-testid="link-to-favorites">Favoritos</Link>
             <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
-            <Link to="/profile/edit">Editar</Link>
           </div>
           <div>
             <p data-testid="header-user-name">{ name }</p>

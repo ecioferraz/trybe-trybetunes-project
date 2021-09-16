@@ -43,8 +43,8 @@ class Album extends Component {
       <>
         <div data-testid="page-album">
           <img src={ albumCover } alt="Album Cover" />
-          <h4 data-testid="album-name">{ album }</h4>
-          <h3 data-testid="artist-name">{ artist }</h3>
+          <h3 data-testid="album-name">{ album }</h3>
+          <h4 data-testid="artist-name">{ artist }</h4>
         </div>
         <div>
           {tracklist.map((track) => <MusicCard key={ track.trackId } track={ track } />)}
