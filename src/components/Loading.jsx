@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Loading extends Component {
-  render() {
-    return (
-      <div>
-        <span>Carregando...</span>
-      </div>
-    );
-  }
+export default function Loading() {
+  return (
+    <section className="loading">
+      <h3>Carregando...</h3>
+    </section>
+  );
 }
-
-export default Loading;

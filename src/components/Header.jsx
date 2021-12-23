@@ -1,51 +1,19 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { getUser } from '../services/userAPI';
-import Loading from './Loading';
+import TunesContext from '../context/TunesContext';
+// import { getUser } from '../services/userAPI';
+// import Loading from './Loading';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      name: '',
-    };
-    this.showUser = this.showUser.bind(this);
-  }
+export default function Header() {
+  const { username } = useContext(TunesContext);
+  // const [loading, setLoading] = useState(false);
 
-  componentDidMount() {
-    this.showUser();
-  }
-
-  async showUser() {
-    this.setState({
-      loading: true,
-    });
-    const resp = await getUser();
-    this.setState({
-      loading: false,
-      name: resp.name,
-    });
-  }
-
-  render() {
-    const { loading, name } = this.state;
-    if (loading) return <Loading />;
-    return (
-      <header className="header" data-testid="header-component">
-        <nav>
-          <div>
-            <Link to="/search" data-testid="link-to-search">Buscar</Link>
-            <Link to="/favorites" data-testid="link-to-favorites">Favoritos</Link>
-            <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
-          </div>
-          <div>
-            <p data-testid="header-user-name">{ name }</p>
-          </div>
-        </nav>
-      </header>
-    );
-  }
+  return (
+    <header data-testid="header-component">
+      <Link data-testid="link-to-search" to="/search">Search</Link>
+      <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+      <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+      <p data-testid="header-user-name">{ username.name }</p>
+    </header>
+  );
 }
-
-export default Header;
