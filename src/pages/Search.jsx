@@ -8,8 +8,7 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import { getUser } from '../services/userAPI';
 
 export default function Search() {
-  const { username, setUsername,
-    setSearchedArtist, setDiscography } = useContext(TunesContext);
+  const { setUsername, setSearchedArtist, setDiscography } = useContext(TunesContext);
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searched, setSearched] = useState(false);
