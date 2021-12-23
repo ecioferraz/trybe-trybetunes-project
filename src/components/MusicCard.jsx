@@ -1,20 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
-import TunesContext from '../context/TunesContext';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 export default function MusicCard({ track }) {
   const { trackName, previewUrl, trackId } = track;
-  const { favorites, setFavorites } = useContext(TunesContext);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleChange = async () => {
     setLoading(true);
-    await addSong(track);
-    setFavorites([...favorites, track]);
-    setChecked(true);
+    if (!checked) {
+      await addSong(track);
+      setChecked(true);
+    }
+    if (checked) {
+      await removeSong(track);
+      setChecked(false);
+    }
     setLoading(false);
   };
 
