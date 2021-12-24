@@ -36,7 +36,6 @@ export default function Album(props) {
               {albumInfo.slice(1).map((track) => (<MusicCard
                 key={ track.trackId }
                 track={ track }
-                // favoriteSongs={ favoriteSongs }
               />))}
             </div>
           </main>

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import TunesContext from '../context/TunesContext';
 
 export default function MusicCard({ track }) {
@@ -12,9 +12,16 @@ export default function MusicCard({ track }) {
 
   const handleChange = async () => {
     setLoading(true);
-    await addSong(track);
-    setFavorites([...favorites, track]);
-    setChecked(true);
+    if (!checked) {
+      await addSong(track);
+      setFavorites([...favorites, track]);
+      setChecked(true);
+    }
+    if (checked) {
+      await removeSong(track);
+      setFavorites(favorites.filter((fav) => fav.trackId !== trackId));
+      setChecked(false);
+    }
     setLoading(false);
   };
 
