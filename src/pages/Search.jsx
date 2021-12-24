@@ -8,7 +8,7 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import { getUser } from '../services/userAPI';
 
 export default function Search() {
-  const { setUsername, setSearchedArtist, setDiscography } = useContext(TunesContext);
+  const { setUserInfo, setSearchedArtist, setDiscography } = useContext(TunesContext);
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searched, setSearched] = useState(false);
@@ -30,12 +30,12 @@ export default function Search() {
     const user = async () => {
       setLoading(true);
       const { name } = await getUser(); // função chamada apenas para passar nos testes
-      setUsername({ name });
+      setUserInfo({ name });
       setLoading(false);
     };
 
     user();
-  }, [setLoading, setUsername]);
+  }, [setLoading, setUserInfo]);
 
   return loading ? <Loading />
     : (

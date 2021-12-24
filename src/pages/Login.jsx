@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TextInput from '../components/TextInput';
 import TunesContext from '../context/TunesContext';
-import { createUser } from '../services/userAPI';
+import { createUser, getUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 
 export default function Login() {
-  const { username, setUsername } = useContext(TunesContext);
+  const { userInfo, setUserInfo } = useContext(TunesContext);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -14,10 +14,11 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { name } = username;
+    const { name } = userInfo;
 
     setLoading(true);
     await createUser({ name });
+    await getUser();
     setLoading(false);
 
     history.push('/search');
@@ -32,14 +33,19 @@ export default function Login() {
               className="login-input"
               dataTestId="login-name-input"
               name="name"
-              onChange={ ({ target: { value } }) => setUsername({ name: value }) }
+              onChange={ ({ target: { value } }) => setUserInfo({
+                name: value,
+                email: '',
+                image: '',
+                description: '',
+              }) }
               placeholder="Digite seu nome"
               type="text"
-              value={ username.name }
+              value={ userInfo.name }
             />
             <button
               data-testid="login-submit-button"
-              disabled={ username.name.length < MIN_LENGTH }
+              disabled={ userInfo.name.length < MIN_LENGTH }
               type="submit"
             >
               Entrar
