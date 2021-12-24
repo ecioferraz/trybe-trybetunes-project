@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import TunesContext from '../context/TunesContext';
 
 export default function MusicCard({ track }) {
   const { trackName, previewUrl, trackId } = track;
+  const { favorites, setFavorites } = useContext(TunesContext);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -12,10 +14,12 @@ export default function MusicCard({ track }) {
     setLoading(true);
     if (!checked) {
       await addSong(track);
+      setFavorites([...favorites, track]);
       setChecked(true);
     }
     if (checked) {
       await removeSong(track);
+      setFavorites(favorites.filter((fav) => fav.trackId !== trackId));
       setChecked(false);
     }
     setLoading(false);

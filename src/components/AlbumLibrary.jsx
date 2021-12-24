@@ -1,11 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import TunesContext from '../context/TunesContext';
 import AlbumCard from './AlbumCard';
 
 export default function AlbumLibrary() {
   const { searchedArtist, discography } = useContext(TunesContext);
-
-  useEffect(() => console.log(discography), [discography]);
 
   return (
     <>
