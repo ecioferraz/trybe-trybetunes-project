@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import TextInput from '../components/TextInput';
 import TunesContext from '../context/TunesContext';
 import { getUser, updateUser } from '../services/userAPI';
+import defaultPic from '../images/vecteezy_vector-cute-ghost_.jpg';
 
 export default function ProfileEdit() {
   const [loading, setLoading] = useState(false);
@@ -76,6 +77,11 @@ export default function ProfileEdit() {
                   value={ description }
                 />
               </label>
+              <img
+                alt="Imagem do usuário"
+                data-testid="profile-image"
+                src={ image || defaultPic }
+              />
               <TextInput
                 className="profile-image-input"
                 dataTestId="edit-input-image"

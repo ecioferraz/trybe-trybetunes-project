@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Loading from '../components/Loading';
 import TunesContext from '../context/TunesContext';
 import { getUser } from '../services/userAPI';
+import defaultPic from '../images/vecteezy_vector-cute-ghost_.jpg';
 
 export default function Profile() {
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ export default function Profile() {
             <img
               alt="Imagem do usuário"
               data-testid="profile-image"
-              src={ image }
+              src={ image || defaultPic }
             />
             <Link to="/profile/edit">
               <button type="button">Editar perfil</button>
