@@ -6,6 +6,7 @@ import TextInput from '../components/TextInput';
 import TunesContext from '../context/TunesContext';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import { getUser } from '../services/userAPI';
+import '../styles/search.css';
 
 export default function Search() {
   const { setUserInfo, setSearchedArtist, setDiscography } = useContext(TunesContext);
@@ -41,8 +42,11 @@ export default function Search() {
     : (
       <>
         <Header />
-        <main data-testid="page-search">
-          <form onSubmit={ handleSubmit }>
+        <main
+          className={ `search-page ${searched && 'searched'}` }
+          data-testid="page-search"
+        >
+          <form className="search-form" onSubmit={ handleSubmit }>
             <TextInput
               className="search-input"
               dataTestId="search-artist-input"
@@ -53,6 +57,7 @@ export default function Search() {
               value={ searchInput }
             />
             <button
+              className="search-btn"
               data-testid="search-artist-button"
               disabled={ searchInput.length < MIN_LENGTH }
               type="submit"
@@ -60,7 +65,7 @@ export default function Search() {
               Pesquisar
             </button>
           </form>
-          <section>
+          <section className="album-library">
             { searched && <AlbumLibrary /> }
           </section>
         </main>

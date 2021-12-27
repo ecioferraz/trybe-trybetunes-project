@@ -21,7 +21,9 @@ export default function Header() {
             <Link data-testid="link-to-profile" to="/profile">Profile</Link>
           </li>
         </ul>
-        <h2 className="username" data-testid="header-user-name">{ userInfo.name }</h2>
+        <div className="username">
+          <h2 data-testid="header-user-name">{ userInfo.name }</h2>
+        </div>
       </nav>
     </header>
   );

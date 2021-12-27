@@ -1,0 +1,78 @@
+.search-page {
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url('../images/cute-girl-white-pink-headphones-actively-dancing-pink-wall-moving-long-hair.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  height: 100vh;
+  padding: 0 180px;
+}
+
+.searched {
+  height: 100% !important;
+}
+
+.search-form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  width: 100%;
+}
+
+.search-form :is( input, button ) {
+  margin: 0 5px;
+}
+
+.album-library {
+  align-items: center;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* padding: 0 15%; */
+  text-align: center;
+}
+
+.album-cards {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.album-card {
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 220px;
+  justify-content: center;
+  margin: 8px;
+  overflow: hidden;
+  transition: all .2s ease-in-out;
+  width: 200px;
+}
+
+.album-card:hover {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transform: scale(1.1);
+}
+.album-card :is( h4, h5 ) {
+  margin: 1em 0;
+}
+
+.album-card h4 {
+  font-size: 1vw;
+}
+
+.album-card h5 {
+  font-size: .7vw;
+}

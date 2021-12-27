@@ -1,13 +1,13 @@
 .login-page {
   align-items: center;
-  background-image: url('../images/vecteezy_abstract-flat-geometric-background_.jpg');
+  background-image: url('../images/young-man-woman-listening-music-headphones.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   height: 100vh;
-  justify-content: center;
-  /* padding: 0 200px */
+  justify-content: flex-end;
+  padding: 0 100px
 }
 
 .login-form {
@@ -24,8 +24,12 @@
   padding: 30px 100px 10px;
 }
 
+.login-input::placeholder {
+  color:rgba(115, 115, 115, 0.5) !important;
+}
+
 .greetings {
-  color: rgb(255, 255, 255);
+  /* color: rgb(255, 255, 255); */
   font-size: 12pt;
   margin: 0;
 }

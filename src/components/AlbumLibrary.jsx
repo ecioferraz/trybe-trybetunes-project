@@ -12,11 +12,13 @@ export default function AlbumLibrary() {
         {' '}
         { searchedArtist }
       </p>
-      { discography.length === 0
-        ? (<h3>Nenhum álbum foi encontrado</h3>)
-        : discography.map((album) => (
-          <AlbumCard album={ album } key={ album.collectionId } />
-        ))}
+      <section className="album-cards">
+        { discography.length === 0
+          ? (<h3>Nenhum álbum foi encontrado</h3>)
+          : discography.map((album) => (
+            <AlbumCard album={ album } key={ album.collectionId } />
+          ))}
+      </section>
     </>
   );
 }
