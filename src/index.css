@@ -84,3 +84,7 @@ header a {
 .image-credit a:hover {
   color:rgb(0, 0, 0, .7);
 }
+
+.left {
+  left: 10px !important;
+}

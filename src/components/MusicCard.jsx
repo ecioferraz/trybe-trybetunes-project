@@ -40,24 +40,42 @@ export default function MusicCard({ track }) {
       <div>
         <h5>{ trackName }</h5>
       </div>
-      <div>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          {' '}
-          <code>audio</code>
-          .
-        </audio>
+      <div className="audio-fav-container">
+        <div className="audio-container">
+          <audio
+            className="player"
+            controls
+            data-testid="audio-component"
+            src={ previewUrl }
+          >
+            <track kind="captions" />
+            O seu navegador não suporta o elemento
+            {' '}
+            <code>audio</code>
+            .
+          </audio>
+        </div>
+        { (loading) ? <Loading />
+          : (
+            <div className="checkbox-container">
+              <label htmlFor={ `fav-${trackId}` }>
+                {
+                  checked ? <i className="fas fa-heart" />
+                    : <i className="far fa-heart" />
+                }
+                <input
+                  checked={ checked }
+                  className="fav-checkbox"
+                  data-testid={ `checkbox-music-${trackId}` }
+                  hidden
+                  id={ `fav-${trackId}` }
+                  onChange={ handleChange }
+                  type="checkbox"
+                />
+              </label>
+            </div>
+          )}
       </div>
-      { (loading) ? <Loading />
-        : (
-          <input
-            checked={ checked }
-            data-testid={ `checkbox-music-${trackId}` }
-            onChange={ handleChange }
-            type="checkbox"
-          />
-        )}
     </section>
   );
 }

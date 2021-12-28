@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AlbumLibrary from '../components/AlbumLibrary';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import SearchInput from '../components/SearchInput';
@@ -55,6 +56,12 @@ export default function Search() {
             { searched && <AlbumLibrary /> }
           </section>
         </main>
+        <Footer
+          author="lookstudio"
+          className="image-credit"
+          href="https://www.freepik.com/photos/music"
+          tag="Music"
+        />
       </>
     );
 }

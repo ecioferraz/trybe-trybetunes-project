@@ -1,0 +1,67 @@
+.album-page {
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url('../images/girl-red-wall-with-headphones.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 180px 100px 850px;
+}
+
+.album-page h5 {
+  margin-bottom: .8em;
+}
+
+.album {
+  align-items: center;
+  backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 100px;
+  -webkit-backdrop-filter: blur(6px);
+  padding: 30px 100px;
+}
+
+.album-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.album-info h4 {
+  margin-top: 0 !important;
+}
+
+.album-info :is( h3, h4 ) {
+  margin: .5em 0;
+}
+
+.player {
+  height: 30px;
+}
+
+.checkbox-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+.audio-fav-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.audio-container {
+  padding-top: 3px;
+}
