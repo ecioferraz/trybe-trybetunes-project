@@ -4,11 +4,12 @@ import Loading from './Loading';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import TunesContext from '../context/TunesContext';
 
-export default function MusicCard({ track }) {
-  const { trackName, previewUrl, trackId } = track;
+export default function MusicCard({ track, albumInfo }) {
+  const { artistName, previewUrl, trackId, trackName } = track;
   const { favorites, setFavorites } = useContext(TunesContext);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
+  console.log(track);
 
   const handleChange = async () => {
     setLoading(true);
@@ -25,6 +26,12 @@ export default function MusicCard({ track }) {
     setLoading(false);
   };
 
+  const shortName = (info) => {
+    const MAX_LENGTH = 25;
+    if (info.length < MAX_LENGTH) return info;
+    return info.slice(0, MAX_LENGTH).concat('...');
+  };
+
   useEffect(() => {
     const checkFavorites = async () => {
       const favs = await getFavoriteSongs();
@@ -36,9 +43,12 @@ export default function MusicCard({ track }) {
   }, [setChecked, trackId]);
 
   return (
-    <section>
+    <section className="album-tracks">
       <div>
-        <h5>{ trackName }</h5>
+        <h5>
+          { albumInfo && `${shortName(artistName)} - ` }
+          { shortName(trackName) }
+        </h5>
       </div>
       <div className="audio-fav-container">
         <div className="audio-container">
@@ -82,4 +92,5 @@ export default function MusicCard({ track }) {
 
 MusicCard.propTypes = {
   track: PropTypes.objectOf(PropTypes.any).isRequired,
+  albumInfo: PropTypes.bool.isRequired,
 };

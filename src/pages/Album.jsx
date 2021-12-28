@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 export default function Album(props) {
   const [loading, setLoading] = useState(false);
   const [albumInfo, setAlbumInfo] = useState([]);
+  const MAX_LENGTH = 5;
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -28,19 +29,20 @@ export default function Album(props) {
       : (
         <>
           <Header />
-          <main className="album-page" data-testid="page-album">
+          <main
+            className={ `album-page ${albumInfo.length < MAX_LENGTH && 'full-page'}` }
+            data-testid="page-album"
+          >
             <div className="album">
               <div className="album-info">
                 <img src={ albumInfo[0].artworkUrl100 } alt="Album Cover" />
                 <h3 data-testid="album-name">{ albumInfo[0].collectionName }</h3>
                 <h4 data-testid="artist-name">{ albumInfo[0].artistName }</h4>
               </div>
-              <div className="album-tracks">
-                {albumInfo.slice(1).map((track) => (<MusicCard
-                  key={ track.trackId }
-                  track={ track }
-                />))}
-              </div>
+              {albumInfo.slice(1).map((track) => (<MusicCard
+                key={ track.trackId }
+                track={ track }
+              />))}
             </div>
           </main>
           <Footer

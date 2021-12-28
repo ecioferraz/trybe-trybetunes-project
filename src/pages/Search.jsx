@@ -15,6 +15,7 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searched, setSearched] = useState(false);
+  const MAX_LENGTH = 13;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -44,7 +45,8 @@ export default function Search() {
       <>
         <Header />
         <main
-          className={ `search-page ${searched && discography.length > 0 && 'searched'}` }
+          className={ `search-page ${searched
+            && discography.length > MAX_LENGTH && 'searched'}` }
           data-testid="page-search"
         >
           <SearchInput
