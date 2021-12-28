@@ -28,13 +28,55 @@
   margin: 0 5px;
 }
 
+.search-btn {
+  background: transparent;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+/* https://codepen.io/yuhomyan/pen/XWdYJdv?editors=1100 */
+.search-container {
+  align-items: center;
+  background: rgb(255, 255, 255);
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+  -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+  inset -4px -4px 6px 0 rgba(255,255,255,.2),
+  inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  padding: 10px 20px;
+  transition: 0.8s;
+}
+
+.search-container:hover > .search-input {
+  width: 200px;
+}
+
+.search-container .search-input {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  outline:none;
+  width: 0px;
+  transition: 0.8s;
+}
+
+.search-container .search-btn .fas {
+  color: rgb(92, 189, 187);
+}
+
 .album-library {
   align-items: center;
   color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* padding: 0 15%; */
   text-align: center;
 }
 
@@ -48,7 +90,7 @@
 
 .album-card {
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.05);
+  background-color: rgb(255, 255, 255, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   display: flex;
@@ -74,5 +116,5 @@
 }
 
 .album-card h5 {
-  font-size: .7vw;
+  font-size: .8vw;
 }

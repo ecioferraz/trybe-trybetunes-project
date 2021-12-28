@@ -68,3 +68,19 @@ header a {
   color:rgb(255, 255, 255, .3);
   font-size: 10pt;
 }
+
+.image-credit {
+  bottom: 5px;
+  font-size: 12px;
+  position: fixed;
+  right: 10px;
+}
+
+.image-credit a {
+  color: rgb(255, 255, 255, .7);
+  text-decoration: none;
+}
+
+.image-credit a:hover {
+  color:rgb(0, 0, 0, .7);
+}

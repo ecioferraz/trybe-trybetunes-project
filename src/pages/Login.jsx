@@ -5,6 +5,7 @@ import TunesContext from '../context/TunesContext';
 import { createUser, getUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import '../styles/login.css';
+import Footer from '../components/Footer';
 
 export default function Login() {
   const { userInfo, setUserInfo } = useContext(TunesContext);
@@ -56,6 +57,7 @@ export default function Login() {
               Entrar
             </button>
           </form>
+          <Footer />
         </main>)
   );
 }
