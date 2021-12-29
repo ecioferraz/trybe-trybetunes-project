@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/trybe-trybetunes-project/static/css/main.cdf9a377.chunk.css",
+    "main.js": "/trybe-trybetunes-project/static/js/main.ef810835.chunk.js",
+    "main.js.map": "/trybe-trybetunes-project/static/js/main.ef810835.chunk.js.map",
+    "runtime-main.js": "/trybe-trybetunes-project/static/js/runtime-main.6af174b7.js",
+    "runtime-main.js.map": "/trybe-trybetunes-project/static/js/runtime-main.6af174b7.js.map",
+    "static/js/2.09f3ccf2.chunk.js": "/trybe-trybetunes-project/static/js/2.09f3ccf2.chunk.js",
+    "static/js/2.09f3ccf2.chunk.js.map": "/trybe-trybetunes-project/static/js/2.09f3ccf2.chunk.js.map",
+    "index.html": "/trybe-trybetunes-project/index.html",
+    "static/css/main.cdf9a377.chunk.css.map": "/trybe-trybetunes-project/static/css/main.cdf9a377.chunk.css.map",
+    "static/js/2.09f3ccf2.chunk.js.LICENSE.txt": "/trybe-trybetunes-project/static/js/2.09f3ccf2.chunk.js.LICENSE.txt",
+    "static/media/search.css": "/trybe-trybetunes-project/static/media/cute-girl-white-pink-headphones-actively-dancing-pink-wall-moving-long-hair.b076b1a4.jpg",
+    "static/media/album.css": "/trybe-trybetunes-project/static/media/girl-red-wall-with-headphones.c28eeba9.jpg",
+    "static/media/profile.css": "/trybe-trybetunes-project/static/media/vecteezy_a-pair-of-headphones-on-a-yellow-background_1861861.ec8d76a7.jpeg",
+    "static/media/favorites.css": "/trybe-trybetunes-project/static/media/vecteezy_satisfied-beautiful-african-american-guy-listening-to-music_1486504.e3620fb1.jpg",
+    "static/media/vecteezy_vector-cute-ghost_.d983ca48.jpg": "/trybe-trybetunes-project/static/media/vecteezy_vector-cute-ghost_.d983ca48.jpg",
+    "static/media/login.css": "/trybe-trybetunes-project/static/media/young-man-woman-listening-music-headphones.de93d164.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6af174b7.js",
+    "static/js/2.09f3ccf2.chunk.js",
+    "static/css/main.cdf9a377.chunk.css",
+    "static/js/main.ef810835.chunk.js"
+  ]
+}
