@@ -5,6 +5,8 @@ import Loading from '../components/Loading';
 import TunesContext from '../context/TunesContext';
 import { getUser } from '../services/userAPI';
 import defaultPic from '../images/vecteezy_vector-cute-ghost_.jpg';
+import '../styles/profile.css';
+import Footer from '../components/Footer';
 
 export default function Profile() {
   const [loading, setLoading] = useState(false);
@@ -23,27 +25,37 @@ export default function Profile() {
   }, [setUserInfo]);
 
   return (
-    <>
-      <Header />
-      { loading ? <Loading />
-        : (
-          <main data-testid="page-profile">
-            <img
-              alt="Imagem do usuário"
-              data-testid="profile-image"
-              src={ image || defaultPic }
-            />
-            <Link to="/profile/edit">
-              <button type="button">Editar perfil</button>
-            </Link>
-            <h4>Nome</h4>
-            <p>{ name }</p>
-            <h4>Email</h4>
-            <p>{ email }</p>
-            <h4>Descrição</h4>
-            <p>{ description }</p>
+    loading ? <Loading />
+      : (
+        <>
+          <Header />
+          <main className="profile-page" data-testid="page-profile">
+            <section className="pic-btn-container">
+              <img
+                alt="Imagem do usuário"
+                data-testid="profile-image"
+                src={ image || defaultPic }
+              />
+              <Link to="/profile/edit">
+                <button type="button">Editar perfil</button>
+              </Link>
+            </section>
+            <section className="user-info-container">
+              <h4>Nome</h4>
+              <p>{ name }</p>
+              <h4>Email</h4>
+              <p>{ email }</p>
+              <h4>Descrição</h4>
+              <p>{ description }</p>
+            </section>
           </main>
-        )}
-    </>
+          <Footer
+            author="Vecteezy"
+            className="image-credit"
+            href="https://www.vecteezy.com/free-photos"
+            tag="Free Stock"
+          />
+        </>
+      )
   );
 }

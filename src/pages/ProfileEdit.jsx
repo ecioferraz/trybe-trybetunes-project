@@ -6,6 +6,8 @@ import TextInput from '../components/TextInput';
 import TunesContext from '../context/TunesContext';
 import { getUser, updateUser } from '../services/userAPI';
 import defaultPic from '../images/vecteezy_vector-cute-ghost_.jpg';
+import '../styles/profile.css';
+import Footer from '../components/Footer';
 
 export default function ProfileEdit() {
   const [loading, setLoading] = useState(false);
@@ -25,7 +27,7 @@ export default function ProfileEdit() {
 
   const disableBtn = () => {
     const disable = !(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/.test(email))
-    || !name || !description || !image;
+    || !name || !description;
     return disable;
   };
 
@@ -40,12 +42,27 @@ export default function ProfileEdit() {
   }, [setUserInfo]);
 
   return (
-    <>
-      <Header />
-      { loading ? <Loading />
-        : (
-          <main data-testid="page-profile-edit">
-            <form onSubmit={ handleSubmitt }>
+    loading ? <Loading />
+      : (
+        <>
+          <Header />
+          <main className="profile-page" data-testid="page-profile-edit">
+            <form className="user-form-container" onSubmit={ handleSubmitt }>
+              <img
+                alt="Imagem do usuário"
+                data-testid="profile-image"
+                src={ image || defaultPic }
+              />
+              <TextInput
+                className="profile-image-input"
+                dataTestId="edit-input-image"
+                labelText="Imagem de perfil"
+                name="profile-pic"
+                onChange={ ({ target: { value } }) => setUserInfo({
+                  name, email, description, image: value }) }
+                type="text"
+                value={ image }
+              />
               <TextInput
                 className="profile-input"
                 dataTestId="edit-input-name"
@@ -77,21 +94,6 @@ export default function ProfileEdit() {
                   value={ description }
                 />
               </label>
-              <img
-                alt="Imagem do usuário"
-                data-testid="profile-image"
-                src={ image || defaultPic }
-              />
-              <TextInput
-                className="profile-image-input"
-                dataTestId="edit-input-image"
-                labelText="Imagem de perfil"
-                name="profile-pic"
-                onChange={ ({ target: { value } }) => setUserInfo({
-                  name, email, description, image: value }) }
-                type="text"
-                value={ image }
-              />
               <button
                 data-testid="edit-button-save"
                 disabled={ disableBtn() }
@@ -101,7 +103,13 @@ export default function ProfileEdit() {
               </button>
             </form>
           </main>
-        )}
-    </>
+          <Footer
+            author="Vecteezy"
+            className="image-credit"
+            href="https://www.vecteezy.com/free-photos"
+            tag="Free Stock"
+          />
+        </>
+      )
   );
 }
