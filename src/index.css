@@ -7,13 +7,89 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.logo {
+  font-family: 'Lobster', cursive;
+  font-size: 20pt;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: rgb(255, 255, 255);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+header a {
+  font-size: 14pt;
+  font-weight: 500;
 }
 
 .loading {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.input-container {
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  padding: 0;
+  position: relative;
+}
+
+.input-container label {
+  color: rgb(255, 255, 255);
+}
+
+.input-container :is( input, select, option ) {
+  background: transparent;
+  border: none;
+  border-bottom: solid 1px rgb(239, 239, 239);
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+}
+
+.input-container option {
+  color: rgb(0, 0, 0)
+}
+
+.input-container input:focus {
+  border: none;
+  border-bottom: 1px solid rgb(0, 215, 117);
+  outline: none;
+ }
+
+.input-container input::placeholder {
+  color:rgb(255, 255, 255, .3);
+  font-size: 10pt;
+}
+
+.image-credit {
+  bottom: 5px;
+  font-size: 12px;
+  position: fixed;
+  right: 10px;
+}
+
+.image-credit a {
+  color: rgb(255, 255, 255, .7);
+  text-decoration: none;
+}
+
+.image-credit a:hover {
+  color:rgb(0, 0, 0, .7);
+}
+
+.left {
+  left: 10px !important;
 }

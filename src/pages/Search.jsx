@@ -1,69 +1,73 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AlbumLibrary from '../components/AlbumLibrary';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
-import TextInput from '../components/TextInput';
+import SearchInput from '../components/SearchInput';
 import TunesContext from '../context/TunesContext';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import { getUser } from '../services/userAPI';
+import '../styles/search.css';
 
 export default function Search() {
-  const { setUsername, setSearchedArtist, setDiscography } = useContext(TunesContext);
+  const { setUserInfo, setSearchedArtist,
+    discography, setDiscography } = useContext(TunesContext);
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searched, setSearched] = useState(false);
-  const MIN_LENGTH = 2;
+  const MAX_LENGTH = 13;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     setLoading(true);
+    setSearched(true);
     setSearchedArtist(searchInput);
     const albumList = await searchAlbumsAPI(searchInput);
     setDiscography(albumList);
     setSearchInput('');
     setLoading(false);
-    setSearched(true);
   };
 
   useEffect(() => {
     const user = async () => {
       setLoading(true);
       const { name } = await getUser(); // função chamada apenas para passar nos testes
-      setUsername({ name });
+      setUserInfo({ name });
       setLoading(false);
     };
 
     user();
-  }, [setLoading, setUsername]);
+  }, [setLoading, setUserInfo]);
 
-  return loading ? <Loading />
-    : (
-      <>
-        <Header />
-        <main data-testid="page-search">
-          <form onSubmit={ handleSubmit }>
-            <TextInput
-              className="search-input"
-              dataTestId="search-artist-input"
-              name="search"
-              onChange={ ({ target: { value } }) => setSearchInput(value) }
-              placeholder="Digite um artista ou banda"
-              type="text"
-              value={ searchInput }
-            />
-            <button
-              data-testid="search-artist-button"
-              disabled={ searchInput.length < MIN_LENGTH }
-              type="submit"
-            >
-              Pesquisar
-            </button>
-          </form>
-          <section>
-            { searched && <AlbumLibrary /> }
-          </section>
-        </main>
-      </>
-    );
+  return (
+    <>
+      <Header />
+      <main
+        className={ `search-page ${searched
+              && discography.length > MAX_LENGTH && 'searched'}` }
+        data-testid="page-search"
+      >
+        { loading ? <Loading className="loading" />
+          : (
+            <>
+              <SearchInput
+                handleSubmit={ handleSubmit }
+                setSearchInput={ setSearchInput }
+                searchInput={ searchInput }
+              />
+              <section className="album-library">
+                { searched && <AlbumLibrary /> }
+              </section>
+            </>
+          )}
+      </main>
+      <Footer
+        author="lookstudio"
+        className="image-credit"
+        href="https://www.freepik.com/photos/music"
+        tag="Music"
+      />
+    </>
+  );
 }

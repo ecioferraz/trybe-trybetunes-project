@@ -8,10 +8,13 @@ export default class TextInput extends Component {
 
     return (
       <>
-        <label htmlFor={ name }>
-          { labelText }
-          {' '}
-        </label>
+        { labelText
+        && (
+          <label htmlFor={ name }>
+            { labelText }
+            {' '}
+          </label>
+        )}
         <input
           className={ className }
           data-testid={ dataTestId }

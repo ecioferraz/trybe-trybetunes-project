@@ -1,0 +1,35 @@
+.favs-page {
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url('../images/vecteezy_satisfied-beautiful-african-american-guy-listening-to-music_1486504.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 0 180px 100px 850px;
+}
+
+.favorited {
+  height: 100vh !important;
+}
+
+.favorited-songs {
+  align-items: center;
+  backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  -webkit-backdrop-filter: blur(6px);
+  padding: 30px 100px;
+}
+
+.favs-page h5 {
+  margin-bottom: .8em;
+}

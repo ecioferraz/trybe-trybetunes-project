@@ -4,8 +4,8 @@ import Loading from './Loading';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import TunesContext from '../context/TunesContext';
 
-export default function MusicCard({ track }) {
-  const { trackName, previewUrl, trackId } = track;
+export default function MusicCard({ track, albumInfo }) {
+  const { artistName, previewUrl, trackId, trackName } = track;
   const { favorites, setFavorites } = useContext(TunesContext);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -25,6 +25,12 @@ export default function MusicCard({ track }) {
     setLoading(false);
   };
 
+  const shortName = (info) => {
+    const MAX_LENGTH = 25;
+    if (info.length < MAX_LENGTH) return info;
+    return info.slice(0, MAX_LENGTH).concat('...');
+  };
+
   useEffect(() => {
     const checkFavorites = async () => {
       const favs = await getFavoriteSongs();
@@ -36,32 +42,54 @@ export default function MusicCard({ track }) {
   }, [setChecked, trackId]);
 
   return (
-    <section>
+    <section className="album-tracks">
       <div>
-        <h5>{ trackName }</h5>
+        <h5>
+          { albumInfo && `${shortName(artistName)} - ` }
+          { shortName(trackName) }
+        </h5>
       </div>
-      <div>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          {' '}
-          <code>audio</code>
-          .
-        </audio>
+      <div className="audio-fav-container">
+        <div className="audio-container">
+          <audio
+            className="player"
+            controls
+            data-testid="audio-component"
+            src={ previewUrl }
+          >
+            <track kind="captions" />
+            O seu navegador não suporta o elemento
+            {' '}
+            <code>audio</code>
+            .
+          </audio>
+        </div>
+        { (loading) ? <Loading className="like-loading" heart />
+          : (
+            <div className="checkbox-container">
+              <label htmlFor={ `fav-${trackId}` }>
+                {
+                  checked ? <i className="fas fa-heart" />
+                    : <i className="far fa-heart" />
+                }
+                <input
+                  checked={ checked }
+                  className="fav-checkbox"
+                  data-testid={ `checkbox-music-${trackId}` }
+                  hidden
+                  id={ `fav-${trackId}` }
+                  onChange={ handleChange }
+                  type="checkbox"
+                />
+              </label>
+            </div>
+          )}
       </div>
-      { (loading) ? <Loading />
-        : (
-          <input
-            checked={ checked }
-            data-testid={ `checkbox-music-${trackId}` }
-            onChange={ handleChange }
-            type="checkbox"
-          />
-        )}
     </section>
   );
 }
 
 MusicCard.propTypes = {
   track: PropTypes.objectOf(PropTypes.any).isRequired,
+  albumInfo: PropTypes.bool.isRequired,
 };
