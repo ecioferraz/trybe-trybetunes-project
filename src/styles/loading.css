@@ -1,10 +1,17 @@
 .loading {
-  align-items: center;
-  background-color: black;
-  display: flex;
-  justify-content: center;
+  /* align-items: center; */
+  /* background-color: transparent; */
+  /* display: flex; */
+  height: 100vh;
+  /* justify-content: flex-start; */
 }
 
+.is-loading {
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* https://loading.io/css/ */
 .lds-roller {
   display: inline-block;
   position: relative;
@@ -89,3 +96,144 @@
     transform: rotate(360deg);
   }
 }
+
+/* https://codepen.io/Wenyan/pen/gPGGLE */
+.rhombus2 {
+  border-radius: 10px;
+  height: 19.6px;
+  width: 19.6px;
+  float: center;
+  animation-delay: 0.9s;
+  animation-duration: 0.8s;
+  animation-name: pump;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(.26,-0.53,.57,2.32);
+}
+
+.rhombus2:before {
+  content: "";
+  position: absolute;
+  background: #EA4C89;
+  height: 11.2px;
+  width: 11.2px;
+  z-index: 0;
+  margin-top: 4.2px;
+  margin-left: 4.2px;
+  transform: rotate(45deg);
+}
+
+.rhombus2 .circle21 {
+  content: "";
+  position: absolute;
+  background: #EA4C89;
+  height: 11.2px;
+  width: 11.2px;
+  z-index: 1;
+  border-radius: 50%;
+  /*animation-direction: alternate;*/
+}
+
+.rhombus2 .circle22 {
+  content: "";
+  position: absolute;
+  background: #EA4C89;
+  height: 11.2px;
+  width: 11.2px;
+  z-index: 1;
+  margin-left: 8.3px;
+  border-radius: 50%;
+  /*animation-direction: alternate;*/
+}
+
+@keyframes pump {
+  0%{
+      transform: scale(1);
+  }
+  100%{
+      transform: scale(1.1);
+  }
+}
+
+@keyframes change1 {
+  0%,
+  25% {
+      margin-top: 0px;
+      margin-left: 0px;
+  }
+  50%,
+  75% {
+      margin-top: 30px;
+      margin-left: 30px;
+  }
+}
+
+@keyframes change2 {
+  25%,
+  50% {
+      margin-top: 30px;
+      margin-left: 0px;
+  }
+  75%,
+  100% {
+      margin-top: 0px;
+      margin-left: 30px;
+  }
+}
+
+
+/* .lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+.lds-heart div {
+  top: 32px;
+  left: 32px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+}
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+ */

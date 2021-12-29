@@ -9,7 +9,6 @@ export default function MusicCard({ track, albumInfo }) {
   const { favorites, setFavorites } = useContext(TunesContext);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(track);
 
   const handleChange = async () => {
     setLoading(true);
@@ -65,7 +64,7 @@ export default function MusicCard({ track, albumInfo }) {
             .
           </audio>
         </div>
-        { (loading) ? <Loading />
+        { (loading) ? <Loading className="like-loading" heart />
           : (
             <div className="checkbox-container">
               <label htmlFor={ `fav-${trackId}` }>

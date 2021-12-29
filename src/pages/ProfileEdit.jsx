@@ -42,11 +42,11 @@ export default function ProfileEdit() {
   }, [setUserInfo]);
 
   return (
-    loading ? <Loading />
-      : (
-        <>
-          <Header />
-          <main className="profile-page" data-testid="page-profile-edit">
+    <>
+      <Header />
+      <main className="profile-page" data-testid="page-profile-edit">
+        {loading ? <Loading />
+          : (
             <form className="user-form-container" onSubmit={ handleSubmitt }>
               <img
                 alt="Imagem do usuário"
@@ -102,14 +102,14 @@ export default function ProfileEdit() {
                 Salvar
               </button>
             </form>
-          </main>
-          <Footer
-            author="Vecteezy"
-            className="image-credit"
-            href="https://www.vecteezy.com/free-photos"
-            tag="Free Stock"
-          />
-        </>
-      )
+          )}
+      </main>
+      <Footer
+        author="Vecteezy"
+        className="image-credit"
+        href="https://www.vecteezy.com/free-photos"
+        tag="Free Stock"
+      />
+    </>
   );
 }

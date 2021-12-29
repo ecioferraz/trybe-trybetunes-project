@@ -25,37 +25,39 @@ export default function Profile() {
   }, [setUserInfo]);
 
   return (
-    loading ? <Loading />
-      : (
-        <>
-          <Header />
-          <main className="profile-page" data-testid="page-profile">
-            <section className="pic-btn-container">
-              <img
-                alt="Imagem do usuário"
-                data-testid="profile-image"
-                src={ image || defaultPic }
-              />
-              <Link to="/profile/edit">
-                <button type="button">Editar perfil</button>
-              </Link>
-            </section>
-            <section className="user-info-container">
-              <h4>Nome</h4>
-              <p>{ name }</p>
-              <h4>Email</h4>
-              <p>{ email }</p>
-              <h4>Descrição</h4>
-              <p>{ description }</p>
-            </section>
-          </main>
-          <Footer
-            author="Vecteezy"
-            className="image-credit"
-            href="https://www.vecteezy.com/free-photos"
-            tag="Free Stock"
-          />
-        </>
-      )
+    <>
+      <Header />
+      <main className="profile-page" data-testid="page-profile">
+        { loading ? <Loading />
+          : (
+            <>
+              <section className="pic-btn-container">
+                <img
+                  alt="Imagem do usuário"
+                  data-testid="profile-image"
+                  src={ image || defaultPic }
+                />
+                <Link to="/profile/edit">
+                  <button type="button">Editar perfil</button>
+                </Link>
+              </section>
+              <section className="user-info-container">
+                <h4>Nome</h4>
+                <p>{ name }</p>
+                <h4>Email</h4>
+                <p>{ email }</p>
+                <h4>Descrição</h4>
+                <p>{ description }</p>
+              </section>
+            </>
+          )}
+      </main>
+      <Footer
+        author="Vecteezy"
+        className="image-credit"
+        href="https://www.vecteezy.com/free-photos"
+        tag="Free Stock"
+      />
+    </>
   );
 }

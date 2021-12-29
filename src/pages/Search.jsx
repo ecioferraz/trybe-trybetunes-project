@@ -40,30 +40,34 @@ export default function Search() {
     user();
   }, [setLoading, setUserInfo]);
 
-  return loading ? <Loading />
-    : (
-      <>
-        <Header />
-        <main
-          className={ `search-page ${searched
-            && discography.length > MAX_LENGTH && 'searched'}` }
-          data-testid="page-search"
-        >
-          <SearchInput
-            handleSubmit={ handleSubmit }
-            setSearchInput={ setSearchInput }
-            searchInput={ searchInput }
-          />
-          <section className="album-library">
-            { searched && <AlbumLibrary /> }
-          </section>
-        </main>
-        <Footer
-          author="lookstudio"
-          className="image-credit"
-          href="https://www.freepik.com/photos/music"
-          tag="Music"
-        />
-      </>
-    );
+  return (
+    <>
+      <Header />
+      <main
+        className={ `search-page ${searched
+              && discography.length > MAX_LENGTH && 'searched'}` }
+        data-testid="page-search"
+      >
+        { loading ? <Loading className="loading" />
+          : (
+            <>
+              <SearchInput
+                handleSubmit={ handleSubmit }
+                setSearchInput={ setSearchInput }
+                searchInput={ searchInput }
+              />
+              <section className="album-library">
+                { searched && <AlbumLibrary /> }
+              </section>
+            </>
+          )}
+      </main>
+      <Footer
+        author="lookstudio"
+        className="image-credit"
+        href="https://www.freepik.com/photos/music"
+        tag="Music"
+      />
+    </>
+  );
 }

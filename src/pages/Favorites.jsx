@@ -12,6 +12,23 @@ export default function Favorites() {
   const [loading, setLoading] = useState(false);
   const MAX_LENGTH = 8;
 
+  const renderFavs = () => {
+    if (!favorites.length) {
+      return (
+        <h3>Nenhuma faixa salva.</h3>
+      );
+    }
+    return (
+      <section className="favorited-songs">
+        {favorites.map((track) => (<MusicCard
+          albumInfo
+          key={ track.trackId }
+          track={ track }
+        />))}
+      </section>
+    );
+  };
+
   useEffect(() => {
     const fetchFavs = async () => {
       setLoading(true);
@@ -24,36 +41,21 @@ export default function Favorites() {
   }, [setFavorites]);
 
   return (
-    loading ? <Loading />
-      : (
-        <>
-          <Header />
-          <main
-            className={ `favs-page ${favorites.length < MAX_LENGTH && 'favorited'}` }
-            data-testid="page-favorites"
-          >
-            {
-              !favorites.length ? (
-                <h3>Nenhuma faixa salva.</h3>
-              ) : (
-                <section className="favorited-songs">
-                  {favorites.map((track) => (<MusicCard
-                    albumInfo
-                    key={ track.trackId }
-                    track={ track }
-                  />))}
-                </section>
-              )
-            }
-          </main>
-          <Footer
-            author="Vecteezy"
-            className="image-credit"
-            freepik
-            href="https://www.vecteezy.com/free-photos"
-            tag="Free Stock"
-          />
-        </>
-      )
+    <>
+      <Header />
+      <main
+        className={ `favs-page ${favorites.length < MAX_LENGTH && 'favorited'}` }
+        data-testid="page-favorites"
+      >
+        { loading ? <Loading /> : renderFavs()}
+      </main>
+      <Footer
+        author="Vecteezy"
+        className="image-credit"
+        freepik
+        href="https://www.vecteezy.com/free-photos"
+        tag="Free Stock"
+      />
+    </>
   );
 }

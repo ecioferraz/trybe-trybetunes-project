@@ -53,13 +53,13 @@
 
 .player {
   height: 30px;
+  margin-right: 10px;
 }
 
 .checkbox-container {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding-left: 10px;
 }
 
 .audio-fav-container {

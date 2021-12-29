@@ -27,10 +27,11 @@ export default function Login() {
   };
 
   return (
-    loading ? <Loading />
-      : (
-        <main className="login-page" data-testid="page-login">
+    <main className={ `login-page ${loading && 'is-loading'}` } data-testid="page-login">
+      { loading ? <Loading className="loading" />
+        : (
           <form className="login-form" onSubmit={ handleSubmit }>
+            <h1 className="logo">TrybeTunes</h1>
             <h6 className="greetings">Olá! Faça seu login:</h6>
             <section className="input-container">
               <TextInput
@@ -57,12 +58,12 @@ export default function Login() {
               Entrar
             </button>
           </form>
-          <Footer
-            author="wayhomestudio"
-            className="image-credit"
-            href="https://www.freepik.com/photos/people"
-            tag="People"
-          />
-        </main>)
-  );
+        )}
+      <Footer
+        author="wayhomestudio"
+        className="image-credit"
+        href="https://www.freepik.com/photos/people"
+        tag="People"
+      />
+    </main>);
 }

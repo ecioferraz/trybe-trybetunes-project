@@ -25,14 +25,15 @@ export default function Album(props) {
   }, [props]);
 
   return (
-    loading || albumInfo.length === 0 ? <Loading />
-      : (
-        <>
-          <Header />
-          <main
-            className={ `album-page ${albumInfo.length < MAX_LENGTH && 'full-page'}` }
-            data-testid="page-album"
-          >
+    <>
+      <Header />
+      <main
+        className={ `album-page ${albumInfo.length < MAX_LENGTH
+          && 'full-page'} ${loading && 'is-loading'}` }
+        data-testid="page-album"
+      >
+        { loading || albumInfo.length === 0 ? <Loading />
+          : (
             <div className="album">
               <div className="album-info">
                 <img src={ albumInfo[0].artworkUrl100 } alt="Album Cover" />
@@ -44,15 +45,15 @@ export default function Album(props) {
                 track={ track }
               />))}
             </div>
-          </main>
-          <Footer
-            author="prostooleh"
-            className="image-credit left"
-            href="https://www.freepik.com/photos/music"
-            tag="Music"
-          />
-        </>
-      )
+          )}
+      </main>
+      <Footer
+        author="prostooleh"
+        className="image-credit left"
+        href="https://www.freepik.com/photos/music"
+        tag="Music"
+      />
+    </>
   );
 }
 
