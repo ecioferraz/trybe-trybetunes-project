@@ -23,7 +23,7 @@ export default function Login() {
     await getUser();
     setLoading(false);
 
-    history.push('/search');
+    history.push('/trybe-trybetunes-project/search');
   };
 
   return (

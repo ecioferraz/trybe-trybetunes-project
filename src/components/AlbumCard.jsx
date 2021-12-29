@@ -16,7 +16,7 @@ export default function AlbumCard({ album: {
     <div className="album-card">
       <Link
         data-testid={ `link-to-album-${collectionId}` }
-        to={ `/album/${collectionId}` }
+        to={ `/trybe-trybetunes-project/album/${collectionId}` }
       >
         <img src={ artworkUrl100 } alt="Album Cover" />
         <div>
