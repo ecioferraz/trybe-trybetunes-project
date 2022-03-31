@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/trybe-trybetunes-project/static/css/main.cdf9a377.chunk.css",
-    "main.js": "/trybe-trybetunes-project/static/js/main.ab543c43.chunk.js",
-    "main.js.map": "/trybe-trybetunes-project/static/js/main.ab543c43.chunk.js.map",
+    "main.css": "/trybe-trybetunes-project/static/css/main.4e00efbc.chunk.css",
+    "main.js": "/trybe-trybetunes-project/static/js/main.faf72fc4.chunk.js",
+    "main.js.map": "/trybe-trybetunes-project/static/js/main.faf72fc4.chunk.js.map",
     "runtime-main.js": "/trybe-trybetunes-project/static/js/runtime-main.6af174b7.js",
     "runtime-main.js.map": "/trybe-trybetunes-project/static/js/runtime-main.6af174b7.js.map",
     "static/js/2.09f3ccf2.chunk.js": "/trybe-trybetunes-project/static/js/2.09f3ccf2.chunk.js",
     "static/js/2.09f3ccf2.chunk.js.map": "/trybe-trybetunes-project/static/js/2.09f3ccf2.chunk.js.map",
     "index.html": "/trybe-trybetunes-project/index.html",
-    "static/css/main.cdf9a377.chunk.css.map": "/trybe-trybetunes-project/static/css/main.cdf9a377.chunk.css.map",
+    "static/css/main.4e00efbc.chunk.css.map": "/trybe-trybetunes-project/static/css/main.4e00efbc.chunk.css.map",
     "static/js/2.09f3ccf2.chunk.js.LICENSE.txt": "/trybe-trybetunes-project/static/js/2.09f3ccf2.chunk.js.LICENSE.txt",
     "static/media/search.css": "/trybe-trybetunes-project/static/media/cute-girl-white-pink-headphones-actively-dancing-pink-wall-moving-long-hair.b076b1a4.jpg",
     "static/media/album.css": "/trybe-trybetunes-project/static/media/girl-red-wall-with-headphones.c28eeba9.jpg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.6af174b7.js",
     "static/js/2.09f3ccf2.chunk.js",
-    "static/css/main.cdf9a377.chunk.css",
-    "static/js/main.ab543c43.chunk.js"
+    "static/css/main.4e00efbc.chunk.css",
+    "static/js/main.faf72fc4.chunk.js"
   ]
 }
