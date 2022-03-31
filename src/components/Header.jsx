@@ -12,13 +12,13 @@ export default function Header() {
         <h1 className="logo">TrybeTunes</h1>
         <ul>
           <li>
-            <Link data-testid="link-to-search" to="/search">Search</Link>
+            <Link data-testid="link-to-search" to="/trybe-trybetunes-project/search">Search</Link>
           </li>
           <li>
-            <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+            <Link data-testid="link-to-favorites" to="/trybe-trybetunes-project/favorites">Favorites</Link>
           </li>
           <li>
-            <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+            <Link data-testid="link-to-profile" to="/trybe-trybetunes-project/profile">Profile</Link>
           </li>
         </ul>
         <div className="username">

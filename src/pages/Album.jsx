@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import MusicCard from '../components/MusicCard';
-import getMusics from '../services/musicsAPI';
+import getMusics from '../services/getMusics';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
 import '../styles/album.css';

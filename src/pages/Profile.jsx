@@ -37,7 +37,7 @@ export default function Profile() {
                   data-testid="profile-image"
                   src={ image || defaultPic }
                 />
-                <Link to="/profile/edit">
+                <Link to="/trybe-trybetunes-project/profile/edit">
                   <button type="button">Editar perfil</button>
                 </Link>
               </section>

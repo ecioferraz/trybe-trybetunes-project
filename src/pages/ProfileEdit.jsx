@@ -25,11 +25,7 @@ export default function ProfileEdit() {
     history.push('/profile');
   };
 
-  const disableBtn = () => {
-    const disable = !(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/.test(email))
-    || !name || !description;
-    return disable;
-  };
+  const disableBtn = () => !(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/.test(email)) || !name || !description;
 
   useEffect(() => {
     const fetchUser = async () => {

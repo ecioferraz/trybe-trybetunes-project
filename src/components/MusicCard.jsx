@@ -31,6 +31,8 @@ export default function MusicCard({ track, albumInfo }) {
     return info.slice(0, MAX_LENGTH).concat('...');
   };
 
+  const checkbox = checked ? <i className="fas fa-heart" /> : <i className="far fa-heart" />;
+
   useEffect(() => {
     const checkFavorites = async () => {
       const favs = await getFavoriteSongs();
@@ -68,10 +70,7 @@ export default function MusicCard({ track, albumInfo }) {
           : (
             <div className="checkbox-container">
               <label htmlFor={ `fav-${trackId}` }>
-                {
-                  checked ? <i className="fas fa-heart" />
-                    : <i className="far fa-heart" />
-                }
+                { checkbox }
                 <input
                   checked={ checked }
                   className="fav-checkbox"
